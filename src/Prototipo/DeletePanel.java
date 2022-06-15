@@ -157,7 +157,7 @@ public class DeletePanel extends javax.swing.JFrame {
          JOptionPane.showMessageDialog(null,"Clente borraro con Exito","Se Elimino Correctamente",JOptionPane.INFORMATION_MESSAGE);
            
          }else{
-             JOptionPane.showMessageDialog(null,"Error Al Borrar el cliente","Error Al Borrar",JOptionPane.ERROR_MESSAGE);
+             JOptionPane.showMessageDialog(null,"ERROR! Porfavor verifique que el cliente no tenga una cita activa","Error Al Borrar",JOptionPane.ERROR_MESSAGE);
          }  
          dispose();
     }//GEN-LAST:event_EliminarMouseClicked

@@ -306,12 +306,14 @@ public class ModClientePanel extends javax.swing.JFrame {
         int mes2 = txtFecha2.getCalendar().get(Calendar.MONTH) + 1;
         String year2 = Integer.toString(txtFecha2.getCalendar().get(Calendar.YEAR));
 
-        if (dia < 10) {
+        if (dia <= 10) {//9
             day = "0" + Integer.toString(dia);
-        } else {
+            System.out.println("No hace a la validacion"+day);
+        } else {            
             day = Integer.toString(dia);
+            System.out.println("Entra a la validacion"+day);
         }
-        if (mes < 10) {
+        if (mes <= 10) {
             month = "0" + Integer.toString(mes);
         } else {
             month = Integer.toString(mes);
@@ -332,14 +334,12 @@ public class ModClientePanel extends javax.swing.JFrame {
         ///////////////////////////////////////////////////////
         DateTimeFormatter date = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate FecNac = LocalDate.parse(fecha1, date);
-        LocalDate ultima = LocalDate.parse(fecha2, date);
         LocalDate FecAct = LocalDate.now();
+        LocalDate ULTIMA = LocalDate.parse(fecha2, date);
         
         Period periodo = Period.between(FecNac, FecAct);
         String edad = (periodo.getYears() + "");
-        Period last = Period.between( ultima,FecAct);
-        String anios = (last.getYears() + "");
-        System.out.println(anios+"");
+
         if (nameTxt.getText().equals("Ingrese nombre del usuario") || nameTxt.getText().isEmpty() || isNumeric(nameTxt.getText()) == true) {
             bandera++;
         }
@@ -357,7 +357,7 @@ public class ModClientePanel extends javax.swing.JFrame {
         }
         if (bandera == 0) {
             conexionBD conex = new conexionBD();
-            String consulta = "UPDATE cliente SET nombre= '" + nameTxt.getText() + "',apellido='" + lastnameTxt.getText() + "'," + "edad=" + edad + "," + "telefono='" + numberTxt.getText() + "'," + "mail='" + mailTxt.getText() + "'," + "fechan='" + fecha1 + "'," + "lastcheck='" + fecha2 + "' WHERE idc=" + idfora;
+            String consulta = "UPDATE cliente SET nombre= '" + nameTxt.getText() + "',apellido='" + lastnameTxt.getText() + "'," + "edad=" + edad + "," + "telefono='" + numberTxt.getText() + "'," + "mail='" + mailTxt.getText() + "'," + "fechan='" + FecNac + "'," + "lastcheck='" + ULTIMA + "' WHERE idc=" + idfora;
             int repuesta = conex.accionesEdit(consulta);
             if (repuesta > 0) {
                 JOptionPane.showMessageDialog(null, "Modificacion Exitosa", "Modificacion con exito", JOptionPane.INFORMATION_MESSAGE);

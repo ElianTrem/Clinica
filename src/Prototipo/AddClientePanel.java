@@ -333,7 +333,7 @@ public class AddClientePanel extends javax.swing.JFrame {
         }
         if (bandera == 0) {
             conexionBD conex = new conexionBD(); 
-            String consulta = "Insert into cliente(nombre,apellido,edad,telefono,mail,fechan,lastcheck) values " + "(" + "'" + nameTxt.getText() + "'," + "'" + lastnameTxt.getText() + "','" + edad + "','" + numberTxt.getText() + "','" + mailTxt.getText() + "','" + fecha1 +"','"+ultima+ "');";
+            String consulta = "Insert into cliente(nombre,apellido,edad,telefono,mail,fechan,lastcheck) values " + "(" + "'" + nameTxt.getText() + "'," + "'" + lastnameTxt.getText() + "','" + edad + "','" + numberTxt.getText() + "','" + mailTxt.getText() + "','" + FecNac +"','"+ultima+ "');";
             System.out.println(consulta);//Debuger
             int repuesta = conex.accionesEdit(consulta);
 

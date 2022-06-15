@@ -80,6 +80,8 @@ public class Prototipo extends javax.swing.JFrame {
         header = new javax.swing.JPanel();
         exitBtn = new javax.swing.JPanel();
         exitTxt = new javax.swing.JLabel();
+        Minimizar = new javax.swing.JPanel();
+        MinimizarTxt = new javax.swing.JLabel();
         MenuPlegable = new javax.swing.JPanel();
         BtnCitas = new javax.swing.JLabel();
         Desplazo = new javax.swing.JLabel();
@@ -178,7 +180,6 @@ public class Prototipo extends javax.swing.JFrame {
                 headerMousePressed(evt);
             }
         });
-        header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         exitBtn.setBackground(new java.awt.Color(251, 248, 241));
 
@@ -205,18 +206,71 @@ public class Prototipo extends javax.swing.JFrame {
         exitBtn.setLayout(exitBtnLayout);
         exitBtnLayout.setHorizontalGroup(
             exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exitBtnLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(exitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(exitBtnLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(exitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         exitBtnLayout.setVerticalGroup(
             exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(exitBtnLayout.createSequentialGroup()
-                .addComponent(exitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exitBtnLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(exitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        header.add(exitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 0, 40, 40));
+        Minimizar.setBackground(new java.awt.Color(251, 248, 241));
+
+        MinimizarTxt.setBackground(new java.awt.Color(251, 248, 241));
+        MinimizarTxt.setFont(new java.awt.Font("Roboto Light", 0, 48)); // NOI18N
+        MinimizarTxt.setForeground(new java.awt.Color(84, 186, 185));
+        MinimizarTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        MinimizarTxt.setText("-");
+        MinimizarTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        MinimizarTxt.setPreferredSize(new java.awt.Dimension(40, 40));
+        MinimizarTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MinimizarTxtMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                MinimizarTxtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                MinimizarTxtMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout MinimizarLayout = new javax.swing.GroupLayout(Minimizar);
+        Minimizar.setLayout(MinimizarLayout);
+        MinimizarLayout.setHorizontalGroup(
+            MinimizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MinimizarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(MinimizarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        MinimizarLayout.setVerticalGroup(
+            MinimizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MinimizarLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(MinimizarTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
+        header.setLayout(headerLayout);
+        headerLayout.setHorizontalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerLayout.createSequentialGroup()
+                .addContainerGap(1094, Short.MAX_VALUE)
+                .addComponent(Minimizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(exitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+        headerLayout.setVerticalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(exitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(Minimizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         jPanel1.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 40));
 
@@ -1488,7 +1542,6 @@ public class Prototipo extends javax.swing.JFrame {
                     auxmail = r.getString("mail");
                     auxfen = new Date(r.getDate("fechan").getTime());
                     auxlc = new Date(r.getDate("lastcheck").getTime());
-                    System.out.println(auxfen + " Y " + auxlc);
                     new ModClientePanel().setVisible(true);
                 }
             } catch (SQLException ex) {
@@ -1689,8 +1742,8 @@ public class Prototipo extends javax.swing.JFrame {
 
     private void AggcitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AggcitaMouseClicked
         // TODO add your handling code here:
-        String idctemp;
-        String idttemp;
+        String idctemp="";
+        String idttemp="";
         int bandera = 0;
         if (((JTextField) txtFecha1.getDateEditor().getUiComponent()).getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error porfavor porporcione una fecha de cita", "Error Al Ingresar Datos", JOptionPane.ERROR_MESSAGE);
@@ -1701,18 +1754,18 @@ public class Prototipo extends javax.swing.JFrame {
         Addmodcitas.setVisible(true);
         String idc = String.valueOf(Clientecombox.getSelectedItem().toString());//Convierte el seleccionado a txt
         String idt = String.valueOf(tratacombox.getSelectedItem().toString());
-        String unidad = idc.charAt(1) + "";//Obtiene el segundo valor esto se hace por si es una decena 10
-        String uni = idc.charAt(1) + "";
-        if (unidad == "-") {
-            idctemp = idc.charAt(0) + "";
-        } else {
+        String unidad = idc.charAt(1) +"";//Obtiene el segundo valor esto se hace por si es una decena 10
+        String uni = idc.charAt(1) +"";
+        if ("-".equals(unidad)) {
+            idctemp = idc.substring(0,1);
+        } else  {
             idctemp = idc.substring(0, 2);
-        }
-        if (uni == "-") {
-            idttemp = idt.charAt(0) + "";
+        };
+        if ("-".equals(uni)) {
+            idttemp = idt.substring(0,1);
         } else {
             idttemp = idt.substring(0, 2);
-        }
+        };
         int dia = txtFecha1.getCalendar().get(Calendar.DAY_OF_MONTH);
         int mes = txtFecha1.getCalendar().get(Calendar.MONTH) + 1;
         String year = Integer.toString(txtFecha1.getCalendar().get(Calendar.YEAR));
@@ -1737,10 +1790,9 @@ public class Prototipo extends javax.swing.JFrame {
         if (bandera == 0) {
             if (consulta > 0) {
                 conexionBD conex = new conexionBD();
-                String pedir = "Insert into citas(fecha,idcliente,idtratamiento) values " + "(" + "'" + fecha1 + "'," + idctemp + "," + idttemp + ");";
+                String pedir = "Insert into citas(fecha,idcliente,idtratamiento) values " + "(" + "'" + FecNac + "'," + idctemp + "," + idttemp + ");";
                 System.out.println(pedir);//Debuger
                 int repuesta = conex.accionesEdit(pedir);
-
                 if (repuesta > 0) {
                     JOptionPane.showMessageDialog(null, "Datos Ingresado Correctamente", "Insertado Correctamente", JOptionPane.INFORMATION_MESSAGE);
                     mostar2();
@@ -1838,10 +1890,10 @@ public class Prototipo extends javax.swing.JFrame {
             if (llamado > 0) {
                 if (bandera == 0) {
                     conexionBD conex = new conexionBD();
-                    String consulta = "UPDATE citas SET fecha= '" + fecha1 + "' WHERE idcitas=" + id;
+                    String consulta = "UPDATE citas SET fecha= '" + FecNac + "' WHERE idcitas=" + id;
                     int repuesta = conex.accionesEdit(consulta);
                     if (repuesta > 0) {
-                        JOptionPane.showMessageDialog(null, "Modificacion Exitosa", "Modificacion con exito", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Modificacion de Fecha Exitosa", "Modificacion con exito", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
             } else {
@@ -2097,6 +2149,24 @@ public class Prototipo extends javax.swing.JFrame {
         // TODO add your handling code here:
         Confi.setBackground(new Color(190, 140, 99));
     }//GEN-LAST:event_ConfiMouseExited
+
+    private void MinimizarTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizarTxtMouseClicked
+        // TODO add your handling code here:
+        this.setExtendedState(ICONIFIED);
+        this.setExtendedState(1);
+    }//GEN-LAST:event_MinimizarTxtMouseClicked
+
+    private void MinimizarTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizarTxtMouseEntered
+        // TODO add your handling code here:
+        Minimizar.setBackground(Color.BLUE);
+         Minimizar.setForeground( Color.white);
+    }//GEN-LAST:event_MinimizarTxtMouseEntered
+
+    private void MinimizarTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinimizarTxtMouseExited
+        // TODO add your handling code here:
+        Minimizar.setBackground(new Color(251, 248, 243));
+        Minimizar.setForeground(new Color(84, 186, 185));
+    }//GEN-LAST:event_MinimizarTxtMouseExited
     void mostar() {//personaliza y crea la tabla
         Color myColor = new Color(239, 255, 253);
         Scroll.getViewport().setBackground(myColor);
@@ -2258,7 +2328,7 @@ public class Prototipo extends javax.swing.JFrame {
                 + "Gracias por preferirnos!\n\n" + "MENSAJE AUTOMATIZADO FAVOR NO CONTESTAR");
         BodyPart adjunto = new MimeBodyPart();
 
-        adjunto.setDataHandler(new DataHandler(new FileDataSource("C:/Users/elian/Documents/firma.jpg")));
+        adjunto.setDataHandler(new DataHandler(new FileDataSource("C:/firma/firma.jpg")));
         adjunto.setFileName("firma.jpg");
         MimeMultipart m = new MimeMultipart();
         m.addBodyPart(texto);
@@ -2363,6 +2433,8 @@ public class Prototipo extends javax.swing.JFrame {
     private javax.swing.JPanel Inicio;
     private javax.swing.JPanel InrBtn;
     private javax.swing.JPanel MenuPlegable;
+    private javax.swing.JPanel Minimizar;
+    private javax.swing.JLabel MinimizarTxt;
     private javax.swing.JLabel ModPass;
     private javax.swing.JLabel Modcita;
     private javax.swing.JPanel ModcitarBtn;

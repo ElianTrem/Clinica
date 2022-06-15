@@ -15,9 +15,9 @@ public class conexionBD {
         connect();
     }
     public void connect() {
-        String database_connection_string = "jdbc:postgresql://localhost:5432/Clinica";//Base de datis a la que nos queremos cnectar   
-        String database_user_name = "postgres";//Nombre del usario que se conectara
-        String database_user_password = "TP20007";//C
+        String database_connection_string = "jdbc:postgresql://ec2-52-73-184-24.compute-1.amazonaws.com/d3bou2jcp6m8hh";//Base de datis a la que nos queremos cnectar   
+        String database_user_name = "uehgigwqadrvgb";//Nombre del usario que se conectara
+        String database_user_password = "6b6c87c0034d1bed7e05af8ffd1c79e0232d3bea464d9fd25d8d80b551cbb640";//C
         try {
             conn = DriverManager.getConnection(database_connection_string, database_user_name, database_user_password);
             System.out.println("Conexion en la base de datos *Exito*.");//Debug para saner si se conecto a la base de datos
