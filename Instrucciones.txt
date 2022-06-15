@@ -1,0 +1,3 @@
+Descargue el archivo y cree una carpeta en el disco C llamada firma de tal forma que quede asi: C:/firma adentro de ella meta la sig img
+https://drive.google.com/file/d/1BqOBZhKyiMkCpVBpzoKsgXaCQxB9FIy3/view?usp=sharing
+C:/firma/firma.jgp
